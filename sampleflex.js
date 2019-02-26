@@ -90,6 +90,54 @@ function flex1(data) {
       })
     }
   }
+  if (arrsenin === undefined || arrsenin.length == 0) {
+    arrsenin.push({
+      "type": "text",
+      "text": "Gabut",
+      "align": "start",
+      "weight": "bold",
+      "size": "sm",
+    })
+  }
+
+  if (arrselasa === undefined || arrselasa.length == 0) {
+    arrselasa.push({
+      "type": "text",
+      "text": "Gabut",
+      "align": "start",
+      "weight": "bold",
+      "size": "sm",
+    })
+  }
+  if (arrrabu === undefined || arrrabu.length == 0) {
+    arrrabu.push({
+      "type": "text",
+      "text": "Gabut",
+      "align": "start",
+      "weight": "bold",
+      "size": "sm",
+    })
+  }
+  if (arrkamis === undefined || arrkamis.length == 0) {
+    arrkamis.push({
+      "type": "text",
+      "text": "Gabut",
+      "align": "start",
+      "weight": "bold",
+      "size": "sm",
+    })
+  }
+  if (arrjumat === undefined || arrjumat.length == 0) {
+    arrjumat.push({
+      "type": "text",
+      "text": "Gabut",
+      "align": "start",
+      "weight": "bold",
+      "size": "sm",
+    })
+  }
+
+
   console.log("asu")
   return ({
     "type": "flex",
@@ -195,25 +243,6 @@ function flex1(data) {
         ]
       },
 
-      "footer": {
-        "type": "box",
-        "layout": "vertical",
-        "contents": [{
-            "type": "button",
-            "height": "sm",
-
-            "action": {
-              "type": "postback",
-              "label": "Dapat Teks",
-              "text": "Minta Teks Jadwal Saya!",
-              "data": Senin + Selasa + Rabu + Kamis + " Jumat :isi sendiri :P"
-            },
-            "color": "#D10F0F",
-            "style": "primary"
-          },
-
-        ]
-      },
       "styles": {
         "header": {
           "backgroundColor": "#C60C30"

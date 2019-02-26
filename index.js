@@ -46,6 +46,7 @@ const replyFlex = (token, texts) => {
   var kode = dptkode(texts)
   var kelas = dptkelas(texts[0])
   var data = []
+  console.log(kelas + kode)
   for (var i = 0; i < kode.length; i++) {
     data.push({
       "Kode MK": kode[i],
