@@ -1,4 +1,4 @@
-const regex = /AIK\d{5}/g;
+const regex = /(AIK|UNW)\d{5}/g;
 
 function dptkode(str) {
     let a = []
