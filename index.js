@@ -54,6 +54,7 @@ const replyFlex = (token, texts) => {
     })
   }
   var isi = hasil(jadwal, data);
+  console.log("datanya adalah" + kelas)
   var flex = sampleflex(isi);
   var flex2 = {
     "type": "flex",

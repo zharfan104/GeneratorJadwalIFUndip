@@ -1,4 +1,4 @@
-const regex = /\s\w{4,}\s\w\s/g;
+const regex = /\s\w{4,}\s\w\s\w\s/g;
 
 function dptkelas(str) {
     let m;
@@ -11,7 +11,7 @@ function dptkelas(str) {
 
         // The result can be accessed through the `m`-variable.
         m.forEach((match, groupIndex) => {
-            a.push(match[match.length - 2]);
+            a.push(match[match.length - 4]);
         });
     }
     return a;
