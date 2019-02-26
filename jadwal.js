@@ -477,7 +477,7 @@ var jadwal = [{
         Jam: '07.30-10.00',
         Ruang: 'E102',
         'Kode MK': 'AIK21363',
-        Nama: 'Keamanan dan Jaminan Informasi',
+        Nama: 'KJI',
         Kelas: 'A'
     },
     {
@@ -525,7 +525,7 @@ var jadwal = [{
         Jam: '13.40-15.30/13.00-15.30',
         Ruang: 'E102',
         'Kode MK': 'AIK21363',
-        Nama: 'Keamanan dan Jaminan Informasi',
+        Nama: 'KJI',
         Kelas: 'B'
     },
     {

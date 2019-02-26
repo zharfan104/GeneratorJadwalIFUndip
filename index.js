@@ -13,7 +13,7 @@ const client = new line.Client(config);
 
 const app = express();
 
-// webhook callback
+// webhook callback dd
 app.post('/webhook', line.middleware(config), (req, res) => {
   // req.body.events should be an array of events
   if (!Array.isArray(req.body.events)) {
@@ -41,7 +41,7 @@ app.post('/webhook', line.middleware(config), (req, res) => {
 });
 
 // simple reply function
-const replyText = (token, texts) => {
+const replyFlex = (token, texts) => {
   texts = Array.isArray(texts) ? texts : [texts];
   var kode = dptkode(texts)
   var kelas = dptkelas(texts[0])
@@ -67,9 +67,10 @@ const replyText = (token, texts) => {
         "contents": [{
           "type": "button",
           "action": {
-            "type": "uri",
-            "label": "Button",
-            "uri": "https://linecorp.com"
+            "type": "postback",
+            "label": "Tekan gan",
+            "text": "Minta Teks Jadwal Saya!",
+            "data": "ini data posback"
           }
         }]
       }
@@ -81,10 +82,12 @@ const replyText = (token, texts) => {
     flex
   );
 };
-const replyFlex = (token, flex) => {
+const replyText = (token, text) => {
   return client.replyMessage(
-    token,
-    flex
+    token, {
+      "type": "text",
+      "text": text
+    }
   );
 };
 
@@ -124,12 +127,8 @@ function handleEvent(event) {
 
     case 'postback':
       let data = event.postback.data;
-      return replyText(event.replyToken, `Got postback: ${data}`);
-
-    case 'beacon':
-      const dm = `${Buffer.from(event.beacon.dm || '', 'hex').toString('utf8')}`;
-      return replyText(event.replyToken, `${event.beacon.type} beacon hwid : ${event.beacon.hwid} with device message = ${dm}`);
-
+      data = JSON.stringify(data)
+      return replyText(event.replyToken, data);
     default:
       throw new Error(`Unknown event: ${JSON.stringify(event)}`);
   }
@@ -137,12 +136,12 @@ function handleEvent(event) {
 
 function handleText(message, replyToken) {
   switch (message.text) {
-    case '1':
-      return replyText(replyToken, "Halo guys");
+    case 'Minta Teks Jadwal Saya!':
+      return replyText(replyToken, "Jika ada bug/pertanyaan. Hubungi line ID: zharfanakbar");
     case 'flex':
-      return replyFlex(replyToken, sampleflex.flex1);
-    default:
       return replyText(replyToken, message.text);
+    default:
+      return replyFlex(replyToken, message.text);
 
   }
 }

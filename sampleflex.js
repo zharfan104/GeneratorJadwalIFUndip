@@ -1,14 +1,22 @@
 function flex1(data) {
+  console.log(data)
   var arr = [];
   var arrsenin = [];
   var arrselasa = [];
   var arrrabu = [];
   var arrkamis = [];
   var arrjumat = [];
+  var Senin = "Senin : ";
+  var Selasa = " Selasa : ";
+  var Rabu = " Rabu : ";
+  var Kamis = " Kamis : ";
+  var Jumat = " Jumat : ";
+
+
   for (var i = 0; i < data.length; i++) {
 
-
     if (data[i].Hari == "Senin") {
+      Senin += " " + data[i].Nama + " (" + data[i].Kelas + ")," + data[i].Jam + "@" + data[i].Ruang;
       arrsenin.push({
         "type": "text",
         "text": data[i].Nama + " (" + data[i].Kelas + ")",
@@ -17,11 +25,13 @@ function flex1(data) {
         "size": "sm",
       }, {
         "type": "text",
-        "text": data[i].Jam + "\t @" + data[i].Ruang,
+        "text": data[i].Jam + "@" + data[i].Ruang,
         "align": "end"
       })
     }
     if (data[i].Hari == "Selasa") {
+      Selasa += " " + data[i].Nama + " (" + data[i].Kelas + ")," + data[i].Jam + "@" + data[i].Ruang;
+
       arrselasa.push({
         "type": "text",
         "text": data[i].Nama + " (" + data[i].Kelas + ")",
@@ -30,11 +40,13 @@ function flex1(data) {
         "size": "sm",
       }, {
         "type": "text",
-        "text": data[i].Jam + "\t @" + data[i].Ruang,
+        "text": data[i].Jam + "@" + data[i].Ruang,
         "align": "end"
       })
     }
     if (data[i].Hari == "Rabu") {
+      Rabu += " " + data[i].Nama + " (" + data[i].Kelas + ")," + data[i].Jam + "@" + data[i].Ruang;
+
       arrrabu.push({
         "type": "text",
         "text": data[i].Nama + " (" + data[i].Kelas + ")",
@@ -43,11 +55,13 @@ function flex1(data) {
         "size": "sm",
       }, {
         "type": "text",
-        "text": data[i].Jam + "\t @" + data[i].Ruang,
+        "text": data[i].Jam + "@" + data[i].Ruang,
         "align": "end"
       })
     }
     if (data[i].Hari == "Kamis") {
+      Kamis += " " + data[i].Nama + " (" + data[i].Kelas + ")," + data[i].Jam + "@" + data[i].Ruang;
+
       arrkamis.push({
         "type": "text",
         "text": data[i].Nama + " (" + data[i].Kelas + ")",
@@ -56,11 +70,13 @@ function flex1(data) {
         "size": "sm",
       }, {
         "type": "text",
-        "text": data[i].Jam + "\t @" + data[i].Ruang,
+        "text": data[i].Jam + "@" + data[i].Ruang,
         "align": "end"
       })
     }
     if (data[i].Hari == "Jumat") {
+      Jumat += " " + data[i].Nama + " (" + data[i].Kelas + ")," + data[i].Jam + "@" + data[i].Ruang;
+
       arrjumat.push({
         "type": "text",
         "text": data[i].Nama + " (" + data[i].Kelas + ")",
@@ -69,7 +85,7 @@ function flex1(data) {
         "size": "sm",
       }, {
         "type": "text",
-        "text": data[i].Jam + "\t @" + data[i].Ruang,
+        "text": data[i].Jam + "@" + data[i].Ruang,
         "align": "end"
       })
     }
@@ -188,23 +204,14 @@ function flex1(data) {
 
             "action": {
               "type": "postback",
-              "label": "Dapat Gambar",
-              "text": "Dapat Gambar",
-              "data": "Dapat Gambar"
+              "label": "Dapat Teks",
+              "text": "Minta Teks Jadwal Saya!",
+              "data": Senin + Selasa + Rabu + Kamis + " Jumat :isi sendiri :P"
             },
             "color": "#D10F0F",
             "style": "primary"
           },
-          {
-            "type": "button",
-            "height": "sm",
-            "action": {
-              "type": "postback",
-              "label": "Dapat Teks",
-              "text": "Dapat Teks",
-              "data": "Dapat Tes"
-            }
-          }
+
         ]
       },
       "styles": {
