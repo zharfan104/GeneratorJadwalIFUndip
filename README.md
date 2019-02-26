@@ -1,6 +1,5 @@
-# line-bot-nodejs-starter
-starter point to create new line bot project
-
+# Generator Jadwal IF
+Jadwal SMT GENAP 2018-2019
 ## How it work
 Start express server to handle webhook from LINE
 
@@ -27,7 +26,4 @@ Use [ngrok](https://ngrok.com/) to expose your local url
 ```
 path/to/ngrok http 3000
 ```
-config webhook url in developer console then enjoy your bot!
-
-## Author
-Sitthi Thiammekha
+Kemudian taruh webhooknya di developers setting bot linemu.
