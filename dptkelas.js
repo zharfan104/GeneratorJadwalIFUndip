@@ -1,4 +1,4 @@
-const regex = /\s\w{4,}\s\w\s\w\s/g;
+const regex = /\s\w{1,}\s\w\s\w\s/g;
 
 function dptkelas(str) {
     let m;

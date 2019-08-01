@@ -2,7 +2,7 @@
 var fs = require('fs');
 const dptkode = require('./dptkode');
 const dptkelas = require('./dptkelas');
-const jadwal = require('./jadwal');
+const jadwal = require('./jadwalganjil');
 const hasil = require('./hasil');
 const line = require('@line/bot-sdk');
 const express = require('express');
@@ -21,21 +21,21 @@ app.post('/webhook', line.middleware(config), (req, res) => {
 	}
 	// handle events separately
 	Promise.all(
-		req.body.events.map((event) => {
-			// check verify webhook event
-			if (
-				event.replyToken === '00000000000000000000000000000000' ||
-				event.replyToken === 'ffffffffffffffffffffffffffffffff'
-			) {
-				return;
-			}
-			var logger = fs.createWriteStream('log.txt', {
-				flags: 'a' // 'a' means appending (old data will be preserved)
-			});
-			logger.write(JSON.stringify(event)); //
-			return handleEvent(event);
-		})
-	)
+			req.body.events.map((event) => {
+				// check verify webhook event
+				if (
+					event.replyToken === '00000000000000000000000000000000' ||
+					event.replyToken === 'ffffffffffffffffffffffffffffffff'
+				) {
+					return;
+				}
+				var logger = fs.createWriteStream('log.txt', {
+					flags: 'a' // 'a' means appending (old data will be preserved)
+				});
+				logger.write(JSON.stringify(event)); //
+				return handleEvent(event);
+			})
+		)
 		.then(() => res.end())
 		.catch((err) => {
 			console.error(err);
@@ -45,9 +45,9 @@ app.post('/webhook', line.middleware(config), (req, res) => {
 
 // simple reply function
 const replyFlex = (token, texts) => {
-	texts = Array.isArray(texts) ? texts : [ texts ];
+	texts = Array.isArray(texts) ? texts : [texts];
 	var kode = dptkode(texts);
-	var unik = kode.filter(function(elem, pos) {
+	var unik = kode.filter(function (elem, pos) {
 		return kode.indexOf(elem) == pos;
 	});
 	var kelas = dptkelas(texts[0]);
@@ -71,17 +71,15 @@ const replyFlex = (token, texts) => {
 			footer: {
 				type: 'box',
 				layout: 'horizontal',
-				contents: [
-					{
-						type: 'button',
-						action: {
-							type: 'postback',
-							label: 'Tekan gan',
-							text: 'Minta Teks Jadwal Saya!',
-							data: 'ini data posback'
-						}
+				contents: [{
+					type: 'button',
+					action: {
+						type: 'postback',
+						label: 'Tekan gan',
+						text: 'Minta Teks Jadwal Saya!',
+						data: 'ini data posback'
 					}
-				]
+				}]
 			}
 		}
 	};
@@ -117,24 +115,24 @@ function handleEvent(event) {
 					throw new Error(`Unknown message: ${JSON.stringify(message)}`);
 			}
 
-		case 'follow':
-			return replyText(event.replyToken, 'Got followed event');
+			case 'follow':
+				return replyText(event.replyToken, 'Got followed event');
 
-		case 'unfollow':
-			return console.log(`Unfollowed this bot: ${JSON.stringify(event)}`);
+			case 'unfollow':
+				return console.log(`Unfollowed this bot: ${JSON.stringify(event)}`);
 
-		case 'join':
-			return replyText(event.replyToken, `Joined ${event.source.type}`);
+			case 'join':
+				return replyText(event.replyToken, `Joined ${event.source.type}`);
 
-		case 'leave':
-			return console.log(`Left: ${JSON.stringify(event)}`);
+			case 'leave':
+				return console.log(`Left: ${JSON.stringify(event)}`);
 
-		case 'postback':
-			let data = event.postback.data;
-			data = JSON.stringify(data);
-			return replyText(event.replyToken, data);
-		default:
-			throw new Error(`Unknown event: ${JSON.stringify(event)}`);
+			case 'postback':
+				let data = event.postback.data;
+				data = JSON.stringify(data);
+				return replyText(event.replyToken, data);
+			default:
+				throw new Error(`Unknown event: ${JSON.stringify(event)}`);
 	}
 }
 
