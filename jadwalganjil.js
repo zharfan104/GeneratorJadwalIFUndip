@@ -512,10 +512,6 @@ var jadwal = [{
 		Kelas: 'A'
 	},
 
-
-
-
-
 	{
 		Hari: 'Kamis',
 		Jam: '13.00-15.30',
@@ -535,9 +531,6 @@ var jadwal = [{
 		Nama: 'Peng. Berbasis Platform',
 		Kelas: 'C'
 	},
-
-
-
 	{
 		Hari: 'Kamis',
 		Jam: '14.50-16.30',
@@ -641,7 +634,7 @@ var jadwal = [{
 	},
 	{
 		Hari: 'Jumat',
-		Jam: '10.10-11.50',
+		Jam: '13.00-14.40',
 		Ruang: 'A303',
 		'Kode MK': 'UNW00001',
 		Nama: 'Pendidikan Agama',

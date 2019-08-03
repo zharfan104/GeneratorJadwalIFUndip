@@ -50,9 +50,9 @@ const replyFlex = (token, texts) => {
 	var unik = kode.filter(function (elem, pos) {
 		return kode.indexOf(elem) == pos;
 	});
+	texts[0] = texts[0].replace("Matematika I", "Matematika Satu")
 	var kelas = dptkelas(texts[0]);
 	var data = [];
-	console.log(kelas + kode);
 	for (var i = 0; i < kode.length; i++) {
 		data.push({
 			'Kode MK': unik[i],
@@ -61,6 +61,8 @@ const replyFlex = (token, texts) => {
 	}
 	var isi = hasil(jadwal, data);
 	console.log('datanya adalah' + kelas);
+	console.log(texts[0]);
+
 	var flex = sampleflex(isi);
 	var flex2 = {
 		type: 'flex',
@@ -83,7 +85,6 @@ const replyFlex = (token, texts) => {
 			}
 		}
 	};
-	console.log(JSON.stringify(flex));
 	return client.replyMessage(token, flex);
 };
 const replyText = (token, text) => {
